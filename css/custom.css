@@ -1,0 +1,204 @@
+:root {
+  --trans-light: rgba(255, 255, 255, 0.65);
+  --trans-dark: rgba(25, 25, 25, 0.75);
+  --border-style: 1px solid rgb(169, 169, 169);
+  --backdrop-filter: blur(5px) saturate(150%);
+
+/* 页脚与头图透明 */
+#footer {
+    background: transparent !important;
+  }
+  #page-header {
+    background: transparent !important;
+  }
+  
+  /* 白天模式遮罩透明 */
+  #footer::before {
+    background: transparent !important;
+  }
+  #page-header::before {
+    background: transparent !important;
+  }
+  
+  /* 夜间模式遮罩透明 */
+  [data-theme="dark"] #footer::before {
+    background: transparent !important;
+  }
+  [data-theme="dark"] #page-header::before {
+    background: transparent !important;
+  }
+  /* style.custom.css */
+body {
+  background-image: url('/img/my tou.jpg');
+  background-size: cover; /* 重要：设置背景图尺寸 */
+  background-attachment: fixed; /* 固定背景不随滚动移动 */
+}
+
+
+}
+
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: 25px;
+  border: var(--border-style);
+}
+
+/* 首页侧栏卡片 */
+#aside-content .card-widget {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: 18px;
+  border: var(--border-style);
+}
+
+/* 文章页、归档页、普通页面 */
+div#post,
+div#page,
+div#archive {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border: var(--border-style);
+  border-radius: 20px;
+}
+
+/* 导航栏 */
+#page-header.nav-fixed #nav {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: var(--backdrop-filter);
+}
+
+[data-theme="dark"] #page-header.nav-fixed #nav {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 夜间模式遮罩 */
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] div#post,
+[data-theme="dark"] div#archive,
+[data-theme="dark"] div#page {
+  background: var(--trans-dark);
+}
+
+
+/* 夜间模式页脚页头遮罩透明 */
+[data-theme="dark"] #footer::before {
+  background: transparent !important;
+}
+[data-theme="dark"] #page-header::before {
+  background: transparent !important;
+}
+
+/* 阅读模式 */
+.read-mode #aside-content .card-widget {
+  background: rgba(158, 204, 171, 0.5) !important;
+}
+.read-mode div#post {
+  background: rgba(158, 204, 171, 0.5) !important;
+}
+
+/* 夜间模式下的阅读模式 */
+[data-theme="dark"] .read-mode #aside-content .card-widget {
+  background: rgba(25, 25, 25, 0.9) !important;
+  color: #ffffff;
+}
+[data-theme="dark"] .read-mode div#post {
+  background: rgba(25, 25, 25, 0.9) !important;
+  color: #ffffff;
+}
+.card-info-avatar .author-status-box {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% - 28px);
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d0d7de;
+  border-radius: 2em;
+  background-color: #f8f8f8f8;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .card-info-avatar .author-status-box {
+  background-color: #222222f2;
+  border: 1px solid #5c6060;
+}
+
+.card-info-avatar .author-status-box .author-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 5px;
+}
+
+.card-info-avatar .author-status-box:hover {
+  width: 105px;
+}
+
+.card-info-avatar .author-status-box:hover .author-status span {
+  width: 105px;
+  margin-left: 4px;
+}
+
+.card-info-avatar .author-status-box .author-status span {
+  width: 0;
+  font-size: 12px;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: 0.4s;
+}
+
+.card-widget .card-info-avatar {
+  display: inline-block;
+  position: relative;
+}
+
+#nav {
+  position: relative !important; /* 确保绝对定位以此为基准 */
+  width: 100% !important; /* 确保占据完整宽度 */
+}
+/* 一级菜单居中 */
+#nav .menus_items {
+  position: absolute !important;
+  width: fit-content !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important; /* 清除默认边距 */
+  padding: 0 !important; /* 清除默认内边距 */
+}
+
+/* 父菜单项设置相对定位 */
+#nav .menus_items .menus_item {
+  position: relative !important;
+}
+#nav .menus_items .menus_item:hover .menus_item_child {
+  left: 50% !important; /* 修改原80%为50% */
+  transform: translateX(-50%) !important;
+  min-width: max-content; /* 防止内容换行 */
+}
+/* 子菜单居中 */
+#nav .menus_items .menus_item:hover .menus_item_child {
+  display: flex !important;
+  position: absolute !important;
+  left: 80% !important;
+  transform: translateX(-50%) !important;
+  top: 100% !important;
+  white-space: nowrap !important;
+  z-index: 99 !important;
+  
+  /* 可选美化样式 */
+  background: hsla(178, 49%, 85%, 0.74) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+}
+
+/* 子菜单项横向排列 */
+.menus_item_child {
+  gap: 5px !important; /* 子项间距 */
+}
